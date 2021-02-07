@@ -1,10 +1,10 @@
-name: Docker Hub Release CI
+name: Docker CI
 
 on:
   push:
-    tags:
-    - "*"
-    
+    tags: [ "*" ]
+    branches: [ "main"]
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name != 'push tag' }}
+          push: ${{ github.event_name == 'push tag' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
