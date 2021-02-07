@@ -37,7 +37,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name == 'push tag' }}
+          push: ${{ contains(github.ref, 'refs/tags/') }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
@@ -46,4 +46,4 @@ jobs:
             BALLERINA_VSIX_URL=https://dist.ballerina.io/downloads/1.2.13/ballerina-1.2.13.vsix
       -
         name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.docker.outputs.digest }}
