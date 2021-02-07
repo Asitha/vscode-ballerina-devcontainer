@@ -13,5 +13,7 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
+      - 
+        name: Build Docker Image  
         run: |
           docker build . --file Dockerfile -t asithan/ballerina-dev:$(date +%s)
