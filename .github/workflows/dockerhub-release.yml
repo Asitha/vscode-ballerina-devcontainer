@@ -43,7 +43,7 @@ jobs:
           build-args: |
             BASE_IMG_VARIANT=focal
             BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/1.2.13/ballerina-linux-installer-x64-1.2.13.deb
-            BALLERINA_VSIX_URL=https://github.com/ballerina-platform/plugin-vscode/releases/download/v1.2.13/ballerina-1.2.13.vsix
+            BALLERINA_VSIX_URL=https://dist.ballerina.io/downloads/1.2.13/ballerina-1.2.13.vsix
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
