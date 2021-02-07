@@ -2,15 +2,23 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
-
+    tags:
+    - "*"
+    
 jobs:
-  path-context:
+  docker:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v2
+      -
+        name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: asithan/ballerina-dev # list of Docker images to use as base name for tags
+          tag-sha: true
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -30,5 +38,13 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: true
-          tags: asithan/ballerina-dev:swan-lake-alpha1
+          push: ${{ github.event_name != 'push tag' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          build-args: |
+            BASE_IMG_VARIANT=focal
+            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-alpha1/ballerina-linux-installer-x64-swan-lake-alpha1.deb
+            BALLERINA_VSIX_URL=https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha1/ballerina-swan-lake-alpha1.vsix
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
