@@ -42,8 +42,8 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
             BASE_IMG_VARIANT=focal
-            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-alpha1/ballerina-linux-installer-x64-swan-lake-alpha1.deb
-            BALLERINA_VSIX_URL=https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-alpha1/ballerina-swan-lake-alpha1.vsix
+            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-preview8/ballerina-linux-installer-x64-swan-lake-preview8.deb
+            BALLERINA_VSIX_URL=https://github.com/ballerina-platform/plugin-vscode/releases/download/vswan-lake-preview8/ballerina-swan-lake-preview8.vsix
       -
         name: Image digest
         run: echo ${{ steps.docker.outputs.digest }}
