@@ -1,8 +1,8 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.155.1/containers/ubuntu/.devcontainer/base.Dockerfile
 
 # [Choice] Ubuntu version: bionic, focal
-ARG BASE_IMG_VARIANT="focal"
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-${BASE_IMG_VARIANT}
+ARG BASE_IMG_VARIANT="ubuntu"
+FROM mcr.microsoft.com/vscode/devcontainers/base:${BASE_IMG_VARIANT}
 
 ARG BALLERINA_DEB_URL=""
 ARG BALLERINA_VSIX_URL=""
