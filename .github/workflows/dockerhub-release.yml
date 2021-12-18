@@ -36,13 +36,13 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64, linux/arm64
           push: ${{ contains(github.ref, 'refs/tags/') }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
-            BASE_IMG_VARIANT=ubuntu
-            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-beta6/ballerina-linux-installer-x64-swan-lake-beta6.deb
+            BASE_IMG_VARIANT=11-bullseye
+            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-beta6/ballerina-swan-lake-beta6.zip
             BALLERINA_VSIX_URL=https://github.com/wso2/ballerina-plugin-vscode/releases/download/v2.1.1/WSO2.ballerina-2.1.1.vsix
       -
         name: Image digest
