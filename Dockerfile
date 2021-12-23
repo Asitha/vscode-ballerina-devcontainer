@@ -13,12 +13,14 @@ ARG BALLERINA_VSIX_URL="https://github.com/wso2/ballerina-plugin-vscode/releases
 
 RUN apt-get update \
     && apt-get install -y wget unzip \
-    && rm -rf /var/lib/apt/lists/* \
-    && wget ${BALLERINA_DEB_URL} -O /tmp/ballerina.zip \ 
-    && wget ${BALLERINA_VSIX_URL} -O /tmp/ballerina.vsix \ 
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget ${BALLERINA_DEB_URL} -O /tmp/ballerina.zip \ 
     && unzip /tmp/ballerina.zip -d /usr/lib/ballerina \
     && mv /usr/lib/ballerina/*/* /usr/lib/ballerina \
-    && rm /tmp/ballerina.zip 
+    && rm /tmp/ballerina.zip  
+
+RUN wget ${BALLERINA_VSIX_URL} -O /tmp/ballerina.vsix
     
 RUN echo export PATH=$PATH:/usr/lib/ballerina/bin >> /home/vscode/.bashrc \
     && mkdir -p /home/vscode/.ballerina
