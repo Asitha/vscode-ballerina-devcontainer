@@ -19,5 +19,6 @@ RUN apt-get update \
     && unzip /tmp/ballerina.zip -d /usr/lib/ballerina \
     && mv /usr/lib/ballerina/*/* /usr/lib/ballerina \
     && rm /tmp/ballerina.zip \
-    && echo export PATH=$PATH:/usr/lib/ballerina/bin >> /home/vscode/.bashrc
+    && echo export PATH=$PATH:/usr/lib/ballerina/bin >> /home/vscode/.bashrc \
+    && mkdir -p /home/vscode/.ballerina
     
