@@ -18,7 +18,8 @@ RUN apt-get update \
     && wget ${BALLERINA_VSIX_URL} -O /tmp/ballerina.vsix \ 
     && unzip /tmp/ballerina.zip -d /usr/lib/ballerina \
     && mv /usr/lib/ballerina/*/* /usr/lib/ballerina \
-    && rm /tmp/ballerina.zip \
-    && echo export PATH=$PATH:/usr/lib/ballerina/bin >> /home/vscode/.bashrc \
+    && rm /tmp/ballerina.zip 
+    
+RUN echo export PATH=$PATH:/usr/lib/ballerina/bin >> /home/vscode/.bashrc \
     && mkdir -p /home/vscode/.ballerina
     
