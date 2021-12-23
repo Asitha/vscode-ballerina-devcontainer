@@ -43,7 +43,7 @@ jobs:
           build-args: |
             BASE_IMG_VARIANT=11-bullseye
             BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-beta6/ballerina-swan-lake-beta6.zip
-            BALLERINA_VSIX_URL=https://github.com/wso2/ballerina-plugin-vscode/releases/download/v2.1.1/WSO2.ballerina-2.1.1.vsix
+            BALLERINA_VSIX_URL=https://github.com/wso2/ballerina-plugin-vscode/releases/download/v3.0.0-preview-m6/ballerina.vsix
       -
         name: Image digest
         run: echo ${{ steps.docker.outputs.digest }}
