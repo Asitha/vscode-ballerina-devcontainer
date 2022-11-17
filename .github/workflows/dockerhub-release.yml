@@ -42,8 +42,8 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
             BASE_IMG_VARIANT=ubuntu
-            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/swan-lake-beta6/ballerina-linux-installer-x64-swan-lake-beta6.deb
-            BALLERINA_VSIX_URL=https://github.com/wso2/ballerina-plugin-vscode/releases/download/v2.1.1/WSO2.ballerina-2.1.1.vsix
+            BALLERINA_DEB_URL=https://dist.ballerina.io/downloads/2201.2.2/ballerina-2201.2.2-swan-lake-linux-x64.deb
+            BALLERINA_VSIX_URL=https://github.com/wso2/ballerina-plugin-vscode/releases/download/v3.3.3/ballerina.vsix
       -
         name: Image digest
         run: echo ${{ steps.docker.outputs.digest }}
